@@ -2,17 +2,17 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/node.rb'
+require 'pry'
 
 
 class NodeTest < Minitest::Test
   def test_node_makes_node
-    node = Node.new(60, "Zoolander")
-
+    node = Node.new(53, "Flubber")
     assert_equal Node, node.class
   end
 
   def test_node_has_score
-    node = Node.new(60, "Zoolander")
+    node = Node.new(60, "Avengers")
     assert_equal 60, node.score
   end
 
@@ -22,12 +22,39 @@ class NodeTest < Minitest::Test
   end
 
   def test_left_node_starts_nil
+    #starts at nil, until a node is added
     node = Node.new(87, "Tropic Thunder")
     assert_nil node.left_link
   end
 
   def test_right_node_starts_nil
+    #starts at nil, until a node is added
     node = Node.new(87, "Tropic Thunder")
     assert_nil node.right_link
+  end
+
+  def test_node_with_right_link
+    node = Node.new(87, "Tropic Thunder")
+    assert true, node.left_link
+  end
+
+  def test_node_with_left_link
+    node = Node.new(87, "Tropic Thunder")
+    assert true, node.right_link
+  end
+
+  def test_nodes_can_pass_off_left
+    node_1 = Node.new(87, "Tropic Thunder")
+    node_2 = Node.new(01, "The Waitress")
+    node_1.left_link = node_2
+    binding.pry
+    assert_equal node_2, node_1.left_link
+  end
+
+  def test_nodes_can_pass_off_right
+    node_1 = Node.new(87, "Tropic Thunder")
+    node_2 = Node.new(01, "The Waitress")
+    node_1.right_link = node_2
+    assert_equal node_2, node_1.right_link
   end
 end
