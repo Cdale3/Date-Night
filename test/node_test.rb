@@ -47,7 +47,6 @@ class NodeTest < Minitest::Test
     node_1 = Node.new(87, "Tropic Thunder")
     node_2 = Node.new(01, "The Waitress")
     node_1.left_link = node_2
-    binding.pry
     assert_equal node_2, node_1.left_link
   end
 
