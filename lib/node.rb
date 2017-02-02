@@ -4,7 +4,7 @@ class Node
   def initialize(score = 50, title = "")
     @score = score
     @title = title
-    @left_link = nil
+    @left_link = 
     #links start nil
     @right_link = nil
   end
