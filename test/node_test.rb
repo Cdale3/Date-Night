@@ -1,11 +1,18 @@
 
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/node.rb'
+require './lib/node'
+require './lib/bst'
 require 'pry'
 
 
 class NodeTest < Minitest::Test
+
+    def test_insert_default_node
+      tree = Tree.new
+      assert_equal 50, tree.head.score
+    end
+
   def test_node_makes_node
     node = Node.new(53, "Flubber")
     assert_equal Node, node.class
@@ -22,13 +29,11 @@ class NodeTest < Minitest::Test
   end
 
   def test_left_node_starts_nil
-    #starts at nil, until a node is added
     node = Node.new(87, "Tropic Thunder")
     assert_nil node.left_link
   end
 
   def test_right_node_starts_nil
-    #starts at nil, until a node is added
     node = Node.new(87, "Tropic Thunder")
     assert_nil node.right_link
   end
